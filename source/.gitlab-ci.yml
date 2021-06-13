@@ -1,0 +1,8 @@
+ciMain:
+    script:
+        - apt update
+        - apt install git -y
+        - git clone https://${GITLAB_USER}:${GITLAB_PASS}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git
+        - php ${CI_PROJECT_NAME}/ci/controller.php validateSyntax
+    tags:
+        - docker_shared
